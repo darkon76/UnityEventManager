@@ -21,7 +21,7 @@ void Foo(object[] args)
 {
 }
 ```
-The array is for event comunication, also when the code is read is easy to identify an event listener.
+The array is for event communication, also when the code is read is easy to identify an event listener.
 
 2.1) Listen to the Event Manager
 
@@ -53,4 +53,4 @@ void OnDisable()
 
 ###Bonus:###
 
-The singleton, check EventManager.cs for integration. Be carefull the singleton have the property of DontDestroyOnLoad. 
+The singleton, check EventManager.cs for integration. Be careful the singleton have the property of DontDestroyOnLoad. 
