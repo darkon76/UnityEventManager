@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class EventManager : Singleton<EventManager>
+public class EventManager : MonoBehaviour
 {
-    private EventArguments[] eventDictionary = new EventArguments[(int)eEvent.MAX];
+    static private EventArguments[] eventDictionary = new EventArguments[(int)eEvent.MAX];
     public delegate void EventArguments(object[] arg);
 
     /// <summary>
@@ -11,7 +11,7 @@ public class EventManager : Singleton<EventManager>
     /// </summary>
     /// <param name="eventName">Event name.</param>
     /// <param name="listener">Listener.</param>
-    public void Add(eEvent eventName, EventArguments listener)
+    static public void Listen(eEvent eventName, EventArguments listener)
     {
         eventDictionary[(int)eventName] += listener;
     }
@@ -22,7 +22,7 @@ public class EventManager : Singleton<EventManager>
     /// </summary>
     /// <param name="eventName">Event name.</param>
     /// <param name="listener">Listener.</param>
-    public void Remove(eEvent eventName, EventArguments listener)
+    static public void Remove(eEvent eventName, EventArguments listener)
     {
           eventDictionary[(int)eventName] -= listener;
     }
@@ -31,7 +31,7 @@ public class EventManager : Singleton<EventManager>
     /// Triggers the event.
     /// </summary>
     /// <param name="eventName">Event name.</param>
-    public void Trigger(eEvent eventName)
+    static public void Trigger(eEvent eventName)
     {
         Trigger(eventName, null);
     }
@@ -41,7 +41,7 @@ public class EventManager : Singleton<EventManager>
     /// </summary>
     /// <param name="eventName">Event name.</param>
     /// <param name="args">Arguments.</param>
-    public void Trigger(eEvent eventName,params object[] args)
+    static public void Trigger(eEvent eventName,params object[] args)
     {
         if (eventDictionary[(int)eventName] != null)
         {
